@@ -12,9 +12,11 @@ def echo(*args):
 	out = u''
 	for u in args:
 		out += u
-	print out
+	print out.encode('utf-8')
 
 def on_message(row):
-	echo('[', row[9], ' ', row[4], '] ', row[17])
+	if row[17] is None:
+		return
+	echo('[', unicode(row[9]), ' ', unicode(row[4]), '] ', row[17])
 
 skypelib.monitor.monitor(config.main_db_path, int(sys.argv[1]), on_message)
