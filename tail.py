@@ -9,10 +9,9 @@ if len(sys.argv) != 2:
 	sys.exit()
 
 def echo(*args):
-	out = ''
-	for i in range(len(args) - 1):
-		out += unicode(args[i]).encode('utf-8')
-	out += unicode(args[len(args) - 1]).encode('utf-8')
+	out = u''
+	for u in args:
+		out += u
 	print out
 
 def on_message(row):
